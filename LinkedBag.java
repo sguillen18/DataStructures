@@ -82,7 +82,7 @@ public class LinkedBag <T> implements BagInterface <T> {
 		T[] result = (T[]) new Object[numberOfElements];
 		int count = 0;
 		for (Node currentNode = firstNode; currentNode != null; currentNode = currentNode.next, count++) {
-			currentNode = currentNode.next;
+			result[count] = currentNode.data;
 		}
 		return null;
 	}
