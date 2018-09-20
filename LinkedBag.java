@@ -28,6 +28,14 @@ public class LinkedBag <T> implements BagInterface <T> {
 		public void setData(T newData) {
 			data = newData;
 		}
+		
+		public Object getNext() {
+			return next;
+		}
+		
+		public void setNext(Node thing) {
+			next = thing;
+		}
 	}
 	
 	//returns number of Nodes
@@ -52,7 +60,7 @@ public class LinkedBag <T> implements BagInterface <T> {
 	//returns true if wasa able to remove the item
 	//otherwise false
 	public boolean remove(T anEntry) {
-		return false;
+		for(Node curr = firstNode; curr != null; curr = curr.getNext();)
 	}
 	
 	//removes last object in bag
