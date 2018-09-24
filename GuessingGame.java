@@ -10,5 +10,11 @@
  * if not, must tell them how many they got correct
  */
 public class GuessingGame {
+	
+	int range;
+	int inputs;
+	
+	
+	
 
 }

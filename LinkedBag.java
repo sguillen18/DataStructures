@@ -20,22 +20,30 @@ public class LinkedBag <T> implements BagInterface <T> {
 		public Node(T newData) {
 			this(newData, null);
 		}
-		
-		/*public T getData() {
-			return data;
+	}
+	
+	public LinkedBag <T> copy(){
+		LinkedBag <T> result = new LinkedBag <T> ();
+		T[] items = toArray();
+		for(int i = 0; i < getCurrentSize(); i++) {
+			result.add(items[i]);
 		}
-		
-		public void setData(T newData) {
-			data = newData;
-		}
-		
-		public T getNext() {
-			return next;
-		}
-		
-		public void setNext(Node thing) {
-			next = thing;
-		}*/
+		return result;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public boolean equals(Object other) {
+		T[] items = toArray();
+		LinkedBag <T> copied = ((LinkedBag <T>)other).copy();
+		 for(int i = 0; i < getCurrentSize(); i++){
+			 if (copied.contains(items[i])) {
+				if( ! copied.remove(items[i])) {
+					return false;
+				}
+			 }
+		 }
+		 
+		 return copied.isEmpty();
 	}
 	
 	//returns number of Nodes
