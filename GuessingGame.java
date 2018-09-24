@@ -33,7 +33,25 @@ public class GuessingGame {
 		}
 	}
 	
+	public LinkedBag <Integer> getGameBoard(){
+		return gameBoard;
+	}
 	
+	
+	public String compare(LinkedBag <Integer> guesses){
+		if(gameBoard.equals(guesses)) {
+			return "You are correct! Play again?";
+		}
+		else {
+			int numRight = 0;
+			Integer[] g = guesses.toArray();
+			for(int i = 0; i < inputs; i++) {
+				if (gameBoard.contains(g[i]))
+					numRight++;
+			}
+			return  numRight + " of your guesses are correct. Try again";
+		}
+	}
 	
 	
 
