@@ -25,9 +25,15 @@ public class GuessingGame {
 		this(0,0);
 	}
 	
-	public LinkedBag <Integer> newBoard(int r, int i){
-		
+	//makes random number bag
+	public void newBoard(int r){
+		for(int idx = 0; idx < inputs; idx++) {
+			int randNum  = (int) (Math.random()* range);
+			gameBoard.add(randNum);
+		}
 	}
+	
+	
 	
 	
 
