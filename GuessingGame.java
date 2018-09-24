@@ -11,9 +11,23 @@
  */
 public class GuessingGame {
 	
-	int range;
-	int inputs;
+	private int range;
+	private int inputs;
+	private LinkedBag <Integer> gameBoard;
 	
+	public GuessingGame(int r, int i) {
+		range = r;
+		inputs = i;
+		gameBoard = new LinkedBag <>();
+		}
+	
+	public GuessingGame() {
+		this(0,0);
+	}
+	
+	public LinkedBag <Integer> newBoard(int r, int i){
+		
+	}
 	
 	
 
