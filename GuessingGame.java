@@ -37,20 +37,23 @@ public class GuessingGame {
 		return gameBoard;
 	}
 	
-	
 	public String compare(LinkedBag <Integer> guesses){
-		if(gameBoard.equals(guesses)) {
+		if(over(guesses)) {
 			return "You are correct! Play again?";
 		}
 		else {
 			int numRight = 0;
-			Integer[] g = guesses.toArray();
+			Integer[] l1 = guesses.toArray();
 			for(int i = 0; i < inputs; i++) {
-				if (gameBoard.contains(g[i]))
+				if (gameBoard.contains(l1[i]))
 					numRight++;
 			}
 			return  numRight + " of your guesses are correct. Try again";
 		}
+	}
+	
+	public boolean over(LinkedBag <Integer> guesses) {
+		return gameBoard.equals(guesses);
 	}
 	
 	
