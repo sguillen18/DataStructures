@@ -31,7 +31,7 @@ public class TestBag {
 			
 			
 					//adding guesses to bag
-					for(int i = 0; i < numberOfNums; i++) {
+					for(int ii = 0; ii < numberOfNums; ii++) {
 						int guess = sc.nextInt();
 						userGuess.add(guess);
 					}
