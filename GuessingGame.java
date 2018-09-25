@@ -26,7 +26,7 @@ public class GuessingGame {
 	}
 	
 	//makes random number bag
-	public void newBoard(int r){
+	public void newBoard(){
 		for(int idx = 0; idx < inputs; idx++) {
 			int randNum  = (int) (Math.random()* range);
 			gameBoard.add(randNum);
@@ -54,6 +54,7 @@ public class GuessingGame {
 	
 	public boolean over(LinkedBag <Integer> guesses) {
 		return gameBoard.equals(guesses);
+		//return false;
 	}
 	
 	

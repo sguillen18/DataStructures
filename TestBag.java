@@ -13,22 +13,28 @@ public class TestBag {
 		//create bag for numbers being guessed
 		LinkedBag <Integer> userGuess = new LinkedBag <> ();
 		
-		System.out.println("How many numbers do you want to guess?");
-		numberOfNums = sc.nextInt();
-		
-		System.out.println("Select a range from 1 to N.");
-		System.out.println("N:");
-		numbersRange = sc.nextInt();
-		
 		//while userGuess != correct bag
 		while(play) {
-			GuessingGame newGame = new GuessingGame(numbersRange, numberOfNums);
+			System.out.println("How many numbers do you want to guess?");
+			numberOfNums = sc.nextInt();
 			
-			while(!newGame.over(userGuess)) {
+			System.out.println("Select a range from 1 to N.");
+			System.out.println("N:");
+			numbersRange = sc.nextInt();
+			
+			GuessingGame newGame = new GuessingGame(numbersRange, numberOfNums);
+			newGame.newBoard();
+			
+			LinkedBag <Integer> g = newGame.getGameBoard();
+			Integer[] a =  g.toArray();
+			for(int k = 0; k < a.length; k++) {
+				System.out.println(a[k]);
+			}
+			
+			while(!(newGame.over(userGuess))) {
 				userGuess.clear();
 				for(int i = 0; i < numberOfNums; i++) {
 					System.out.println("Enter " + numberOfNums + " integers in the range from 1 to " + numbersRange + ". Entries may be duplicate.");
-			
 			
 					//adding guesses to bag
 					for(int ii = 0; ii < numberOfNums; ii++) {
@@ -37,7 +43,7 @@ public class TestBag {
 					}
 				}
 				
-				newGame.compare(userGuess);
+				System.out.println(newGame.compare(userGuess));
 			}
 			
 			if(newGame.over(userGuess)) {
