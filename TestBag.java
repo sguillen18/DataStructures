@@ -49,15 +49,12 @@ public class TestBag {
 				
 				System.out.println(newGame.compare(userGuess));
 			
-			
-				if(newGame.over(userGuess)) {
-					String ans = sc.next();
-					if(ans.equalsIgnoreCase("No")) {
-						play = false;
-					}
-				}
 			}
-			
+				String ans = sc.next();
+				if(ans.equalsIgnoreCase("No")) {
+					play = false;
+				}
+		
 			
 		}
 

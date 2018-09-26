@@ -39,25 +39,26 @@ public class GuessingGame {
 	
 	public String compare(LinkedBag <Integer> guesses){
 		if(over(guesses)) {
-			return "You are correct! Play again?";
+			return "You are correct! Play again? Type yes or no";
 		}
 		else {
-			return  ( numRight(guesses) + " of your guesses are correct. Try again");
+			return  (numRight(guesses) + " of your guesses are correct. Try again");
 		}
 	}
 	
 	public int numRight(LinkedBag <Integer> guesses) {
-		Object[] l1 = guesses.toArray();
+		int n = 0;
+		Object[] l1 = gameBoard.toArray();
 		int[] ob = new int[l1.length];
-		LinkedBag <Integer> inThere = new LinkedBag <Integer> ();
-		LinkedBag <Integer> gameBag = gameBoard;
-		for(int i = 0; i < inputs; i++) {
-			if (gameBag.contains(ob[i])) {
-				inThere.add(ob[i]);
-				gameBag.remove(ob[i]);
+		for (int i=0;i<ob.length;i++) {
+			ob[i] = (int)l1[i];
+		}
+		for(int z : ob) {
+			if (guesses.remove(z)) {
+				n++;
 			}
 		}
-		return inThere.getCurrentSize();
+		return n;
 	}
 	
 	public boolean over(LinkedBag <Integer> guesses) {
