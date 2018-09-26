@@ -28,7 +28,7 @@ public class GuessingGame {
 	//makes random number bag
 	public void newBoard(){
 		for(int idx = 0; idx < inputs; idx++) {
-			int randNum  = (int) (Math.random()* range);
+			int randNum  = (int) (Math.random()* range) + 1;
 			gameBoard.add(randNum);
 		}
 	}
@@ -42,19 +42,26 @@ public class GuessingGame {
 			return "You are correct! Play again?";
 		}
 		else {
-			int numRight = 0;
-			Integer[] l1 = guesses.toArray();
-			for(int i = 0; i < inputs; i++) {
-				if (gameBoard.contains(l1[i]))
-					numRight++;
-			}
-			return  numRight + " of your guesses are correct. Try again";
+			return  ( numRight(guesses) + " of your guesses are correct. Try again");
 		}
+	}
+	
+	public int numRight(LinkedBag <Integer> guesses) {
+		Object[] l1 = guesses.toArray();
+		int[] ob = new int[l1.length];
+		LinkedBag <Integer> inThere = new LinkedBag <Integer> ();
+		LinkedBag <Integer> gameBag = gameBoard;
+		for(int i = 0; i < inputs; i++) {
+			if (gameBag.contains(ob[i])) {
+				inThere.add(ob[i]);
+				gameBag.remove(ob[i]);
+			}
+		}
+		return inThere.getCurrentSize();
 	}
 	
 	public boolean over(LinkedBag <Integer> guesses) {
 		return gameBoard.equals(guesses);
-		//return false;
 	}
 	
 	

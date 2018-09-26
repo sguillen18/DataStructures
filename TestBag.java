@@ -1,4 +1,4 @@
- import instructor.ResArrayBag;
+ //import instructor.ResArrayBag;
  import java.util.Scanner;
  
 public class TestBag {
@@ -11,7 +11,7 @@ public class TestBag {
 		boolean play = true;
 		
 		//create bag for numbers being guessed
-		LinkedBag <Integer> userGuess = new LinkedBag <> ();
+		LinkedBag <Integer> userGuess = new LinkedBag <Integer> ();
 		
 		//while userGuess != correct bag
 		while(play) {
@@ -26,30 +26,35 @@ public class TestBag {
 			newGame.newBoard();
 			
 			LinkedBag <Integer> g = newGame.getGameBoard();
-			Integer[] a =  g.toArray();
+			
+			Object[] objArray = g.toArray();
+			int[] a = new int[objArray.length];
+			for (int i=0;i<a.length;i++) {
+				a[i] = (int)objArray[i];
+			}
+
 			for(int k = 0; k < a.length; k++) {
 				System.out.println(a[k]);
 			}
 			
-			while(!(newGame.over(userGuess))) {
+			while(newGame.over(userGuess)) {
 				userGuess.clear();
-				for(int i = 0; i < numberOfNums; i++) {
-					System.out.println("Enter " + numberOfNums + " integers in the range from 1 to " + numbersRange + ". Entries may be duplicate.");
+				System.out.println("Enter " + numberOfNums + " integers in the range from 1 to " + numbersRange + ". Entries may be duplicate.");
 			
-					//adding guesses to bag
-					for(int ii = 0; ii < numberOfNums; ii++) {
-						int guess = sc.nextInt();
-						userGuess.add(guess);
-					}
+				//adding guesses to bag
+				for(int ii = 0; ii < numberOfNums; ii++) {
+					int guess = sc.nextInt();
+					userGuess.add(guess);
 				}
 				
 				System.out.println(newGame.compare(userGuess));
-			}
 			
-			if(newGame.over(userGuess)) {
-				String ans = sc.next();
-				if(ans.equalsIgnoreCase("No")) {
-					play = false;
+			
+				if(newGame.over(userGuess)) {
+					String ans = sc.next();
+					if(ans.equalsIgnoreCase("No")) {
+						play = false;
+					}
 				}
 			}
 			
