@@ -36,10 +36,8 @@ public class LinkedBag <T> implements BagInterface <T> {
 		T[] items = toArray();
 		LinkedBag <T> copied = ((LinkedBag <T>)other).copy();
 		 for(int i = 0; i < getCurrentSize(); i++){
-			 if (copied.contains(items[i])) {
-				if( ! copied.remove(items[i])) {
-					return false;
-				}
+			 if (copied.contains(items[i]) &&! copied.remove(items[i])) {
+				return false;
 			 }
 		 }
 		 
@@ -95,8 +93,8 @@ public class LinkedBag <T> implements BagInterface <T> {
 	public void clear() {
 		for(Node curr = firstNode; curr != null; curr = curr.next) {
 			curr.data = null;
-			numberOfElements--;
-		}	
+		}
+		numberOfElements = 0;
 	}
 	
 	//returns true if the bag contains given element
@@ -121,12 +119,13 @@ public class LinkedBag <T> implements BagInterface <T> {
 	}
 	
 	//creates bag into an array
+	@SuppressWarnings("unchecked")
 	public T[] toArray() {
-		@SuppressWarnings("unchecked")
 		T[] result = (T[]) new Object[numberOfElements];
 		int count = 0;
-		for (Node currentNode = firstNode; currentNode != null; currentNode = currentNode.next, count++) {
+		for (Node currentNode = firstNode; count < numberOfElements; count++) {
 			result[count] = currentNode.data;
+			currentNode = currentNode.next;
 		}
 		return result;
 	}
