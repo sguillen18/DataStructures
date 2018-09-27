@@ -38,7 +38,7 @@ public class GuessingGame {
 	}
 	
 	public String compare(LinkedBag <Integer> guesses){
-		if(over(guesses)) {
+		if(notOver(guesses)) {
 			return "You are correct! Play again? Type yes or no";
 		}
 		else {
@@ -61,7 +61,7 @@ public class GuessingGame {
 		return n;
 	}
 	
-	public boolean over(LinkedBag <Integer> guesses) {
+	public boolean notOver(LinkedBag <Integer> guesses) {
 		return gameBoard.equals(guesses);
 	}
 	
