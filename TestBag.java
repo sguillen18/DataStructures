@@ -25,7 +25,7 @@ public class TestBag {
 			GuessingGame newGame = new GuessingGame(numbersRange, numberOfNums);
 			newGame.newBoard();
 			
-			LinkedBag <Integer> g = newGame.getGameBoard();
+			/*LinkedBag <Integer> g = newGame.getGameBoard();
 			
 			Object[] objArray = g.toArray();
 			int[] a = new int[objArray.length];
@@ -35,9 +35,9 @@ public class TestBag {
 
 			for(int k = 0; k < a.length; k++) {
 				System.out.println(a[k]);
-			}
+			}*/
 			
-			while(newGame.notOver(userGuess)) {
+			while(!newGame.gameOver(userGuess)) {
 				userGuess.clear();
 				System.out.println("Enter " + numberOfNums + " integers in the range from 1 to " + numbersRange + ". Entries may be duplicate.");
 			
@@ -47,16 +47,17 @@ public class TestBag {
 					userGuess.add(guess);
 				}
 				LinkedBag <Integer> temp = new LinkedBag <Integer> ();
-				temp = userGuess;
+				temp = userGuess.copy();
 				
-				System.out.println(newGame.compare(temp));
+				System.out.println(newGame.compare(userGuess));
 				
 				if(newGame.numRight(temp) == numberOfNums) {
 					String ans = sc.next();
 					if(ans.equalsIgnoreCase("No")) {
 						play = false;
 					}
-					break;
+					else if (!ans.equalsIgnoreCase("No")) {
+						break;}
 				}
 			
 			}

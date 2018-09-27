@@ -36,7 +36,7 @@ public class LinkedBag <T> implements BagInterface <T> {
 		T[] items = toArray();
 		LinkedBag <T> copied = ((LinkedBag <T>)other).copy();
 		 for(int i = 0; i < getCurrentSize(); i++){
-			 if (copied.contains(items[i]) &&! copied.remove(items[i])) {
+			 if ( !(copied.remove(items[i]))) {
 				return false;
 			 }
 		 }
