@@ -48,13 +48,17 @@ public class TestBag {
 				}
 				
 				System.out.println(newGame.compare(userGuess));
+				
+				if(newGame.numRight(userGuess) == numberOfNums) {
+					String ans = sc.next();
+					if(ans.equalsIgnoreCase("No")) {
+						play = false;
+					}
+					break;
+				}
 			
 			}
-				String ans = sc.next();
-				if(ans.equalsIgnoreCase("No")) {
-					play = false;
-				}
-		
+			
 			
 		}
 
